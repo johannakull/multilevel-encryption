@@ -3,6 +3,16 @@ from ciphers.atbash_cipher import AtbashCipher
 from ciphers.letter_number_cipher import LetterNumberCipher
 
 
+def get_int(user_input):
+    try:
+        integer = int(user_input)
+    except ValueError:
+        user_input = input("That is not a valid option. Please try again: ")
+        return get_int(user_input)
+    else:
+        return integer
+
+
 def main():
     text = input("Enter the text to be encoded/decoded: ")
 
@@ -21,20 +31,19 @@ def main():
         print(f"{num}: {cipher}")
 
     while True:
-        try:
-            cipher_choice = int(input("\nEnter the number of the cipher you'd like to use: "))
-        except ValueError:
+
+        cipher_choice = input("\nEnter the number of the cipher you'd like to use: ")
+        cipher_choice_int = get_int(cipher_choice)
+
+        while cipher_choice_int not in (cipher_options.keys()):
             print("That is not a valid option. Please try again.")
             continue
 
-        while cipher_choice not in (cipher_options.keys()):
-            cipher_choice = int(input("That is not a valid option. Please try again: "))
-
-        if cipher_choice == 1:
+        if cipher_choice_int == 1:
             cipher = CaesarCipher(text)
-        elif cipher_choice == 2:
+        elif cipher_choice_int == 2:
             cipher = AtbashCipher(text)
-        elif cipher_choice == 3:
+        elif cipher_choice_int == 3:
             cipher = LetterNumberCipher(text)
 
         if method == "encrypt":
