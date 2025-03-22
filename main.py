@@ -27,6 +27,7 @@ class CaesarCipher(ChangeBase):
         encrypted_string = ""
 
         for char in self.base:
+            # this is O(n), think about alternative implementations
             if char in ALPHABET:
                 i = ALPHABET.index(char)
                 new_i = i + self.shift_number
