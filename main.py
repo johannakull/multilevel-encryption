@@ -4,10 +4,10 @@ from ciphers.letter_number_cipher import LetterNumberCipher
 
 
 def main():
-    original_text = input("Enter the text to be encoded/decoded: ")
+    text = input("Enter the text to be encoded/decoded: ")
 
     method = input("Would you like to encrypt or decrypt this text? ").lower()
-    while not (method == "encrypt" or method == "decrypt"):
+    while method not in ("encrypt", "decrypt"):
         method = input("Please type 'encrypt' or 'decrypt': ")
 
     cipher_options = {
@@ -20,14 +20,7 @@ def main():
     for num, cipher in cipher_options.items():
         print(f"{num}: {cipher}")
 
-    processed_text = None
-
     while True:
-        if processed_text is None:
-            text_to_change = original_text
-        else:
-            text_to_change = processed_text
-
         try:
             cipher_choice = int(input("\nEnter the number of the cipher you'd like to use: "))
         except ValueError:
@@ -38,22 +31,22 @@ def main():
             cipher_choice = int(input("That is not a valid option. Please try again: "))
 
         if cipher_choice == 1:
-            cipher = CaesarCipher(text_to_change)
+            cipher = CaesarCipher(text)
         elif cipher_choice == 2:
-            cipher = AtbashCipher(text_to_change)
+            cipher = AtbashCipher(text)
         elif cipher_choice == 3:
-            cipher = LetterNumberCipher(text_to_change)
+            cipher = LetterNumberCipher(text)
 
         if method == "encrypt":
-            processed_text = cipher.encrypt()
+            text = cipher.encrypt()
         elif method == "decrypt":
-            processed_text = cipher.decrypt()
+            text = cipher.decrypt()
 
         continue_processing = input("\nWould you like to apply any other ciphers? (Y/N) ").upper()
         while continue_processing not in ("Y", "N"):
             continue_processing = input("Invalid choice. Please enter 'Y' or 'N': ").upper()
         if continue_processing == "N":
-            print(processed_text)
+            print(text)
             break
 
 
