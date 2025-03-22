@@ -1,10 +1,5 @@
-from base import ChangeBase
-
-ALPHABET = (
-    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
-    "X", "Y", "Z"
-)
-ALPHABET_SET = set(ALPHABET)
+from ciphers.base import ChangeBase
+from constants import ALPHABET, ALPHABET_SET
 
 
 class AtbashCipher(ChangeBase):
