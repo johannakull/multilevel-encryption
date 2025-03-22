@@ -49,10 +49,10 @@ def main():
         elif method == "decrypt":
             processed_text = cipher.decrypt()
 
-        continue_encrypting = input("Would you like to apply any other ciphers? (Y/N) ").upper()
-        while not (continue_encrypting == "Y" or continue_encrypting == "N"):
-            continue_encrypting = input("Invalid choice. Please enter 'Y' or 'N': ")
-        if continue_encrypting == "N":
+        continue_processing = input("Would you like to apply any other ciphers? (Y/N) ").upper()
+        while not (continue_processing == "Y" or continue_processing == "N"):
+            continue_processing = input("Invalid choice. Please enter 'Y' or 'N': ")
+        if continue_processing == "N":
             print(processed_text)
             break
 
