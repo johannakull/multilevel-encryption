@@ -7,6 +7,7 @@ class ChangeBase(ABC):
 
     def __init__(self, base):
         self.base = base
+        self.cipher = None
 
     @abstractmethod
     def encrypt(self):
@@ -23,27 +24,47 @@ class CaesarCipher(ChangeBase):
         super().__init__(base)
         self.shift_number = shift_number
 
-    def encrypt(self) -> str:
-        encrypted_string = ""
+    def _shift_forward(self, index):
+        new_index = index + self.shift_number
+        if new_index > len(ALPHABET) - 1:
+            new_index -= len(ALPHABET)
+        return new_index
 
+    def _shift_backward(self, index):
+        new_index = index - self.shift_number
+        if new_index < 0:
+            new_index += len(ALPHABET)
+        return new_index
+
+    def encrypt(self) -> str:
+        encrypted_text = ""
         for char in self.base:
             # this is O(n), think about alternative implementations
             if char in ALPHABET:
                 i = ALPHABET.index(char)
-                new_i = i + self.shift_number
-                if new_i > len(ALPHABET) - 1:
-                    print(len(ALPHABET))
-                    new_i -= len(ALPHABET)
-                encrypted_string += ALPHABET[new_i]
+                new_i = self._shift_forward(i)
+                encrypted_text += ALPHABET[new_i]
             else:
-                encrypted_string += char
-
-        return encrypted_string
+                encrypted_text += char
+        return encrypted_text
 
     def decrypt(self) -> str:
-        return "decrypted string"
+        decrypted_text = ""
+        for char in self.base:
+            # this is O(n), think about alternative implementations
+            if char in ALPHABET:
+                i = ALPHABET.index(char)
+                new_i = self._shift_backward(i)
+                decrypted_text += ALPHABET[new_i]
+            else:
+                decrypted_text += char
+        return decrypted_text
 
 
-original_text = "HELLO WORLD"
-caesar = CaesarCipher(original_text, 3)
+original = "HELLO WORLD"
+caesar = CaesarCipher(original, 3)
 print(caesar.encrypt())
+
+encrypted = "KHOOR ZRUOG"
+caesar = CaesarCipher(encrypted, 3)
+print(caesar.decrypt())
