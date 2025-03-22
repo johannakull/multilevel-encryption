@@ -31,6 +31,9 @@ class CaesarCipher(ChangeBase):
             if char in ALPHABET:
                 i = ALPHABET.index(char)
                 new_i = i + self.shift_number
+                if new_i > len(ALPHABET) - 1:
+                    print(len(ALPHABET))
+                    new_i -= len(ALPHABET)
                 encrypted_string += ALPHABET[new_i]
             else:
                 encrypted_string += char
