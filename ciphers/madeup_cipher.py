@@ -11,7 +11,7 @@ class MadeUpCipher(ChangeBase):
         encrypted_text = ""
         for char in self.base:
             if char in ALPHABET_SET:
-                new_char = str(ALPHABET.index(char) + 1)
+                new_char = ALPHABET.index(char) + 1
                 encrypted_text += f"{new_char} "
             elif char == " ":
                 encrypted_text += "0 "
