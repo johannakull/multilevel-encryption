@@ -1,9 +1,25 @@
 from ciphers.caesar_cipher import CaesarCipher
 from ciphers.atbash_cipher import AtbashCipher
-from ciphers.madeup_cipher import MadeUpCipher
+from ciphers.letter_number_cipher import LetterNumberCipher
 
 
-def process(original_text, method):
+def main():
+    original_text = input("Enter the text to be encoded/decoded: ")
+
+    method = input("Would you like to encrypt or decrypt this text? ").lower()
+    while not (method == "encrypt" or method == "decrypt"):
+        method = input("Please type 'encrypt' or 'decrypt': ")
+
+    cipher_options = {
+        1: "Caesar Cipher",
+        2: "Atbash Cipher",
+        3: "LetterNumber Cipher"
+    }
+
+    print()
+    for num, cipher in cipher_options.items():
+        print(f"{num}: {cipher}")
+
     processed_text = None
 
     while True:
@@ -18,15 +34,15 @@ def process(original_text, method):
             print("That is not a valid option. Please try again.")
             continue
 
+        while cipher_choice not in (cipher_options.keys()):
+            cipher_choice = int(input("That is not a valid option. Please try again: "))
+
         if cipher_choice == 1:
             cipher = CaesarCipher(text_to_change)
         elif cipher_choice == 2:
             cipher = AtbashCipher(text_to_change)
         elif cipher_choice == 3:
-            cipher = MadeUpCipher(text_to_change)
-        else:
-            print("That is not a valid option. Please try again.")
-            continue
+            cipher = LetterNumberCipher(text_to_change)
 
         if method == "encrypt":
             processed_text = cipher.encrypt()
@@ -37,28 +53,8 @@ def process(original_text, method):
         while not (continue_encrypting == "Y" or continue_encrypting == "N"):
             continue_encrypting = input("Invalid choice. Please enter 'Y' or 'N': ")
         if continue_encrypting == "N":
-            return processed_text
-
-
-def main():
-    original_text = input("Enter the text to be encoded/decoded: ")
-
-    method = input("Would you like to encrypt or decrypt this text? ").lower()
-    while not (method == "encrypt" or method == "decrypt"):
-        method = input("Please type 'encrypt' or 'decrypt': ")
-
-    cipher_options = {
-        1: "Caesar Cipher",
-        2: "Atbash Cipher",
-        3: "MadeUp Cipher"
-    }
-
-    print()
-    for num, cipher in cipher_options.items():
-        print(f"{num}: {cipher}")
-
-    processed_text = process(original_text, method)
-    print(processed_text)
+            print(processed_text)
+            break
 
 
 if __name__ == "__main__":

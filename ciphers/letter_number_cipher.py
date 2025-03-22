@@ -2,7 +2,7 @@ from ciphers.change_base import ChangeBase
 from constants import ALPHABET, ALPHABET_SET
 
 
-class MadeUpCipher(ChangeBase):
+class LetterNumberCipher(ChangeBase):
 
     def __init__(self, base):
         super().__init__(base)
