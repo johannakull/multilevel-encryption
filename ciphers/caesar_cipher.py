@@ -1,4 +1,4 @@
-from ciphers.base import ChangeBase
+from ciphers.change_base import ChangeBase
 from constants import ALPHABET, ALPHABET_SET
 
 
