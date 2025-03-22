@@ -10,5 +10,6 @@ class ChangeBase(ABC):
     def encrypt(self):
         return
 
+    @abstractmethod
     def decrypt(self):
         return
