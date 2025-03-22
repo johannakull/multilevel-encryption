@@ -15,9 +15,14 @@ def main():
     for num, cipher in cipher_options.items():
         print(f"{num}: {cipher}")
 
-    cipher_choice = input("\nEnter the number of the cipher: ")
+    while True:
+        cipher_choice = input("\nEnter the number of the cipher: ")
 
-    caesar = CaesarCipher(original_text)
+        continue_encrypting = input("Would you like to apply any other ciphers? (Y/N) ").upper()
+        if continue_encrypting == "Y":
+            print("\nWhich of the ciphers would you like to use?")
+        else:
+            break
 
 
 if __name__ == "__main__":
