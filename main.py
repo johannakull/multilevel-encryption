@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 ALPHABET = ("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
-
+ALPHABET_SET = set(ALPHABET)
 
 class ChangeBase(ABC):
 
@@ -39,8 +39,7 @@ class CaesarCipher(ChangeBase):
     def encrypt(self) -> str:
         encrypted_text = ""
         for char in self.base:
-            # this is O(n), think about alternative implementations
-            if char in ALPHABET:
+            if char in ALPHABET_SET:
                 i = ALPHABET.index(char)
                 new_i = self._shift_forward(i)
                 encrypted_text += ALPHABET[new_i]
@@ -51,8 +50,7 @@ class CaesarCipher(ChangeBase):
     def decrypt(self) -> str:
         decrypted_text = ""
         for char in self.base:
-            # this is O(n), think about alternative implementations
-            if char in ALPHABET:
+            if char in ALPHABET_SET:
                 i = ALPHABET.index(char)
                 new_i = self._shift_backward(i)
                 decrypted_text += ALPHABET[new_i]
