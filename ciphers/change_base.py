@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class ChangeBase(ABC):
 
     def __init__(self, base):
-        self.base = base
+        self.base = base.upper()
         self.cipher = None
 
     @abstractmethod
