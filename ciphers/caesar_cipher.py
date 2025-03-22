@@ -4,9 +4,9 @@ from constants import ALPHABET, ALPHABET_SET
 
 class CaesarCipher(ChangeBase):
 
-    def __init__(self, base: str, shift_number: int):
+    def __init__(self, base: str):
         super().__init__(base)
-        self.shift_number = shift_number
+        self.shift_number = input("Enter a shift number: ")
 
     def _shift_forward(self, index):
         new_index = index + self.shift_number
