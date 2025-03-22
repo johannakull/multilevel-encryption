@@ -8,24 +8,12 @@ class CaesarCipher(ChangeBase):
         super().__init__(base)
         self.shift_number = input("Enter a shift number: ")
 
-    def _shift_forward(self, index):
-        new_index = index + self.shift_number
-        if new_index > len(ALPHABET) - 1:
-            new_index -= len(ALPHABET)
-        return new_index
-
-    def _shift_backward(self, index):
-        new_index = index - self.shift_number
-        if new_index < 0:
-            new_index += len(ALPHABET)
-        return new_index
-
     def encrypt(self) -> str:
         encrypted_text = ""
         for char in self.base:
             if char in ALPHABET_SET:
                 i = ALPHABET.index(char)
-                new_i = self._shift_forward(i)
+                new_i = (i + self.shift_number) % len(ALPHABET)
                 encrypted_text += ALPHABET[new_i]
             else:
                 encrypted_text += char
@@ -36,7 +24,7 @@ class CaesarCipher(ChangeBase):
         for char in self.base:
             if char in ALPHABET_SET:
                 i = ALPHABET.index(char)
-                new_i = self._shift_backward(i)
+                new_i = (i - self.shift_number) % len(ALPHABET)
                 decrypted_text += ALPHABET[new_i]
             else:
                 decrypted_text += char
