@@ -12,8 +12,7 @@ class AtbashCipher(ChangeBase):
         for char in self.base:
             if char in ALPHABET_SET:
                 i = ALPHABET.index(char)
-                new_i = 25 - i
-                atbash_text += ALPHABET[new_i]
+                atbash_text += ALPHABET[25 - i]
             else:
                 atbash_text += char
         return atbash_text
