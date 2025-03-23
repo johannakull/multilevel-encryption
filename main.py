@@ -28,11 +28,10 @@ def main():
 
     print()
     for num, cipher in cipher_options.items():
-        print(f"{num}: {cipher.__str__()}")
+        print(f"{num}: {cipher}")
 
     while True:
         cipher_choice = input("\nEnter the number of the cipher you'd like to use: ")
-
         if cipher_choice not in (cipher_options.keys()):
             print("That is not a valid option. Please try again.")
             continue
