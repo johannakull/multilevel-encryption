@@ -7,6 +7,10 @@ class ChangeBase(ABC):
         self.base = base.upper()
 
     @abstractmethod
+    def __repr__(self):
+        return
+
+    @abstractmethod
     def encrypt(self):
         return
 
