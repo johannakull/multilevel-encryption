@@ -14,7 +14,7 @@ def get_int(user_input):
 
 
 def main():
-    text = input("Enter the text to be encoded/decoded: ")
+    text = input("Enter the text to be encrypted/decrypted: ")
 
     method = input("Would you like to encrypt or decrypt this text? ").lower()
     while method not in ("encrypt", "decrypt"):
