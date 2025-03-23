@@ -4,8 +4,10 @@ from ciphers.letter_number_cipher import LetterNumberCipher
 
 
 def main():
-    text = input("Enter the text to be encrypted/decrypted: ")
+    print("\nWELCOME TO MULTILEVEL ENCRYPTION")
+    print("Please note that any encrypted/decrypted text will be returned in uppercase.")
 
+    text = input("\nEnter the text to be encrypted/decrypted: ")
     method = input("Would you like to encrypt or decrypt this text? ").lower()
     while method not in ("encrypt", "decrypt"):
         method = input("Please type 'encrypt' or 'decrypt': ")
@@ -19,6 +21,7 @@ def main():
     print()
     for num, cipher in cipher_options.items():
         print(f"{num}: {cipher}")
+    print("\nNote that the LetterNumberCipher is not suitable for text containing numbers.")
 
     while True:
         cipher_choice = input("\nEnter the number of the cipher you'd like to use: ")
