@@ -33,11 +33,9 @@ def main():
         elif method == "decrypt":
             text = cipher.decrypt()
 
-        continue_processing = input("\nWould you like to apply any other ciphers? (Y/N) ").upper()
-        while continue_processing not in ("Y", "N"):
-            continue_processing = input("Invalid choice. Please enter 'Y' or 'N': ").upper()
-        if continue_processing == "N":
-            print(text)
+        print("\nWould you like to apply any other ciphers?")
+        if input("Enter 'y' to continue, or press enter to skip: ").lower() != 'y':
+            print(f"\nHere is your encrypted/decrypted text:\n{text}\n")
             break
 
 
