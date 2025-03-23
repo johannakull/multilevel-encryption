@@ -11,8 +11,8 @@ class CaesarCipher(ChangeBase):
     def __repr__(self):
         return "Caesar Cipher"
 
-    def _shift_chars(self, shift_number: int):
-        self.shift_number = int(input("Enter a shift number: "))
+    def _shift_chars(self, multiplier: int):
+        self.shift_number = int(input("Enter a shift number: ")) * multiplier
         shifted_text = ""
         for char in self.base:
             if char in ALPHABET_SET:
@@ -24,7 +24,7 @@ class CaesarCipher(ChangeBase):
         return shifted_text
 
     def encrypt(self) -> str:
-        return self._shift_chars(self.shift_number)
+        return self._shift_chars(1)
 
     def decrypt(self) -> str:
-        return self._shift_chars(self.shift_number * -1)
+        return self._shift_chars(-1)
