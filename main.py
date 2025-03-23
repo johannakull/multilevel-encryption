@@ -21,30 +21,23 @@ def main():
         method = input("Please type 'encrypt' or 'decrypt': ")
 
     cipher_options = {
-        1: "Caesar Cipher",
-        2: "Atbash Cipher",
-        3: "LetterNumber Cipher"
+        "1": CaesarCipher(text),
+        "2": AtbashCipher(text),
+        "3": LetterNumberCipher(text),
     }
 
     print()
     for num, cipher in cipher_options.items():
-        print(f"{num}: {cipher}")
+        print(f"{num}: {cipher.__str__()}")
 
     while True:
-
         cipher_choice = input("\nEnter the number of the cipher you'd like to use: ")
-        cipher_choice_int = get_int(cipher_choice)
 
-        while cipher_choice_int not in (cipher_options.keys()):
+        if cipher_choice not in (cipher_options.keys()):
             print("That is not a valid option. Please try again.")
             continue
 
-        if cipher_choice_int == 1:
-            cipher = CaesarCipher(text)
-        elif cipher_choice_int == 2:
-            cipher = AtbashCipher(text)
-        elif cipher_choice_int == 3:
-            cipher = LetterNumberCipher(text)
+        cipher = cipher_options[cipher_choice]
 
         if method == "encrypt":
             text = cipher.encrypt()

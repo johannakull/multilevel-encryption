@@ -7,6 +7,9 @@ class AtbashCipher(ChangeBase):
     def __init__(self, base: str):
         super().__init__(base)
 
+    def __repr__(self):
+        return "Atbash Cipher"
+
     def _generate_atbash_text(self) -> str:
         atbash_text = ""
         for char in self.base:
