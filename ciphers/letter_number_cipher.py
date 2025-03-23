@@ -22,7 +22,7 @@ class LetterNumberCipher(ChangeBase):
                 encrypted_text += f"{char} "
         return encrypted_text
 
-    def decrypt(self):  # doesn't currently work with numbers (+ crashes when number is too high)
+    def decrypt(self):  # doesn't currently work with numbers (+ throws exception when number is too high)
         decrypted_text = ""
         for char in self.base.split(" "):
             try:
