@@ -4,6 +4,8 @@ from constants import ALPHABET, ALPHABET_SET
 
 class CaesarCipher(ChangeBase):
 
+    name = "Caesar Cipher"
+
     def __init__(self, base: str):
         super().__init__(base)
         self.shift_number = None
@@ -13,10 +15,10 @@ class CaesarCipher(ChangeBase):
 
     def _shift_chars(self, multiplier: int):
         self.shift_number = int(input("Enter a shift number: ")) * multiplier
-        shifted_text = ""
+        shifted_text = ""  # do this as a list instead
         for char in self.base:
             if char in ALPHABET_SET:
-                i = ALPHABET.index(char)
+                i = ALPHABET.index(char)  # use dictionary
                 new_i = (i + self.shift_number) % len(ALPHABET)
                 shifted_text += ALPHABET[new_i]
             else:
