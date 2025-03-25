@@ -1,5 +1,5 @@
 from ciphers.change_base import ChangeBase
-from constants import ALPHABET, ALPHABET_SET
+from constants import LETTER_TO_INDEX_MAP, INDEX_TO_LETTER_MAP
 
 
 class LetterNumberCipher(ChangeBase):
@@ -12,8 +12,8 @@ class LetterNumberCipher(ChangeBase):
     def encrypt(self):
         encrypted_text = ""
         for char in self.base:
-            if char in ALPHABET_SET:
-                new_char = ALPHABET.index(char) + 1
+            if char in LETTER_TO_INDEX_MAP:
+                new_char = LETTER_TO_INDEX_MAP[char]
                 encrypted_text += f"{new_char} "
             elif char == " ":
                 encrypted_text += "0 "
@@ -24,13 +24,13 @@ class LetterNumberCipher(ChangeBase):
     def decrypt(self):  # doesn't work if there are numbers in original (unencrypted) text
         decrypted_text = ""
         for char in self.base.split(" "):
-            try:
-                index = int(char) - 1
-            except ValueError:
-                decrypted_text += char
+            if char == "0":
+                decrypted_text += " "
             else:
-                if char == "0":
-                    decrypted_text += " "
+                try:
+                    index = int(char)
+                except ValueError:
+                    decrypted_text += char
                 else:
-                    decrypted_text += ALPHABET[index]
-        return decrypted_text
+                    decrypted_text += INDEX_TO_LETTER_MAP[index]
+            return decrypted_text

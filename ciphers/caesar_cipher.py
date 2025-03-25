@@ -1,5 +1,5 @@
 from ciphers.change_base import ChangeBase
-from constants import ALPHABET, ALPHABET_SET
+from constants import LETTER_TO_INDEX_MAP
 
 
 class CaesarCipher(ChangeBase):
@@ -14,10 +14,10 @@ class CaesarCipher(ChangeBase):
         self.shift_number = int(input("Enter a shift number: ")) * multiplier
         shifted_text = ""  # do this as a list instead
         for char in self.base:
-            if char in ALPHABET_SET:
-                i = ALPHABET.index(char)  # use dictionary
-                new_i = (i + self.shift_number) % len(ALPHABET)
-                shifted_text += ALPHABET[new_i]
+            if char in LETTER_TO_INDEX_MAP:
+                i = LETTER_TO_INDEX_MAP[char]
+                new_i = (i + self.shift_number) % len(LETTER_TO_INDEX_MAP)
+                shifted_text += LETTER_TO_INDEX_MAP[new_i]
             else:
                 shifted_text += char
         return shifted_text
