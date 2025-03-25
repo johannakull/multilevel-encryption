@@ -4,10 +4,10 @@ from constants import ALPHABET, ALPHABET_SET
 
 class AtbashCipher(ChangeBase):
 
-    name = "Atbash Cipher"
-
     def __init__(self, base: str):
         super().__init__(base)
+
+    name = "Atbash Cipher"
 
     def _generate_atbash_text(self) -> str:
         atbash_text = ""

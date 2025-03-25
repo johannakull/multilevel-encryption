@@ -4,11 +4,11 @@ from constants import ALPHABET, ALPHABET_SET
 
 class CaesarCipher(ChangeBase):
 
-    name = "Caesar Cipher"
-
     def __init__(self, base: str):
         super().__init__(base)
         self.shift_number = None
+
+    name = "Caesar Cipher"
 
     def _shift_chars(self, multiplier: int):
         self.shift_number = int(input("Enter a shift number: ")) * multiplier

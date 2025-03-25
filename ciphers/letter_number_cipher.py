@@ -4,10 +4,10 @@ from constants import ALPHABET, ALPHABET_SET
 
 class LetterNumberCipher(ChangeBase):
 
-    name = "LetterNumber Cipher"
-
     def __init__(self, base):
         super().__init__(base)
+
+    name = "LetterNumber Cipher"
 
     def encrypt(self):
         encrypted_text = ""
