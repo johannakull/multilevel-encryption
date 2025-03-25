@@ -10,9 +10,6 @@ class CaesarCipher(ChangeBase):
         super().__init__(base)
         self.shift_number = None
 
-    def __repr__(self):
-        return "Caesar Cipher"
-
     def _shift_chars(self, multiplier: int):
         self.shift_number = int(input("Enter a shift number: ")) * multiplier
         shifted_text = ""  # do this as a list instead

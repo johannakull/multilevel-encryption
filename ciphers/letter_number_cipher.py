@@ -9,9 +9,6 @@ class LetterNumberCipher(ChangeBase):
     def __init__(self, base):
         super().__init__(base)
 
-    def __repr__(self):
-        return "LetterNumber Cipher"
-
     def encrypt(self):
         encrypted_text = ""
         for char in self.base:
