@@ -1,17 +1,17 @@
-from ciphers.change_base import ChangeBase
+from ciphers.cipher import Cipher
 from constants import LETTER_TO_INDEX_MAP, INDEX_TO_LETTER_MAP
 
 
-class LetterNumberCipher(ChangeBase):
+class LetterNumberCipher(Cipher):
 
-    def __init__(self, base):
-        super().__init__(base)
+    def __init__(self, original_text):
+        super().__init__(original_text)
 
     name = "LetterNumber Cipher"
 
     def encrypt(self):
         encrypted_text = ""
-        for char in self.base:
+        for char in self.original_text:
             if char in LETTER_TO_INDEX_MAP:
                 new_char = LETTER_TO_INDEX_MAP[char]
                 encrypted_text += f"{new_char} "
@@ -23,7 +23,7 @@ class LetterNumberCipher(ChangeBase):
 
     def decrypt(self):  # doesn't work if there are numbers in original (unencrypted) text
         decrypted_text = ""
-        for char in self.base.split(" "):
+        for char in self.original_text.split(" "):
             if char == "0":
                 decrypted_text += " "
             else:

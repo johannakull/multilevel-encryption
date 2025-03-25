@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 
 
-class ChangeBase(ABC):
+class Cipher(ABC):
 
-    def __init__(self, base):
-        self.base = base.upper()
+    def __init__(self, original_text):
+        self.original_text = original_text.upper()
 
     @property
     @abstractmethod

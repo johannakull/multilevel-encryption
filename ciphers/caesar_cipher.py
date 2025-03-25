@@ -1,11 +1,11 @@
-from ciphers.change_base import ChangeBase
+from ciphers.cipher import Cipher
 from constants import LETTER_TO_INDEX_MAP
 
 
-class CaesarCipher(ChangeBase):
+class CaesarCipher(Cipher):
 
-    def __init__(self, base: str):
-        super().__init__(base)
+    def __init__(self, original_text: str):
+        super().__init__(original_text)
         self.shift_number = None
 
     name = "Caesar Cipher"
@@ -13,7 +13,7 @@ class CaesarCipher(ChangeBase):
     def _shift_chars(self, multiplier: int):
         self.shift_number = int(input("Enter a shift number: ")) * multiplier
         shifted_text = ""  # do this as a list instead
-        for char in self.base:
+        for char in self.original_text:
             if char in LETTER_TO_INDEX_MAP:
                 i = LETTER_TO_INDEX_MAP[char]
                 new_i = (i + self.shift_number) % len(LETTER_TO_INDEX_MAP)

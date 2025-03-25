@@ -1,17 +1,17 @@
-from ciphers.change_base import ChangeBase
+from ciphers.cipher import Cipher
 from constants import LETTER_TO_INDEX_MAP
 
 
-class AtbashCipher(ChangeBase):
+class AtbashCipher(Cipher):
 
-    def __init__(self, base: str):
-        super().__init__(base)
+    def __init__(self, original_text: str):
+        super().__init__(original_text)
 
     name = "Atbash Cipher"
 
     def _generate_atbash_text(self) -> str:
         atbash_text = ""
-        for char in self.base:
+        for char in self.original_text:
             if char in LETTER_TO_INDEX_MAP:
                 i = LETTER_TO_INDEX_MAP[char]
                 atbash_text += LETTER_TO_INDEX_MAP[25 - i]
