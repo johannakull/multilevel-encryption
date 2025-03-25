@@ -12,12 +12,6 @@ def main():
     while method not in ("encrypt", "decrypt"):
         method = input("Please type 'encrypt' or 'decrypt': ")
 
-    # cipher_options = {
-    #     "1": CaesarCipher(text),
-    #     "2": AtbashCipher(text),
-    #     "3": LetterNumberCipher(text),
-    # }
-
     cipher_options = {
         "1": CaesarCipher,
         "2": AtbashCipher,
