@@ -1,5 +1,5 @@
 from ciphers.cipher import Cipher
-from constants import LETTER_TO_INDEX_MAP
+from constants import LETTER_TO_INDEX_MAP, INDEX_TO_LETTER_MAP
 
 
 class CaesarCipher(Cipher):
@@ -17,7 +17,7 @@ class CaesarCipher(Cipher):
             if char in LETTER_TO_INDEX_MAP:
                 i = LETTER_TO_INDEX_MAP[char]
                 new_i = (i + self.shift_number) % len(LETTER_TO_INDEX_MAP)
-                shifted_text += LETTER_TO_INDEX_MAP[new_i]
+                shifted_text += INDEX_TO_LETTER_MAP[new_i]
             else:
                 shifted_text += char
         return shifted_text
