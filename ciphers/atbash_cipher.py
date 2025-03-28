@@ -1,5 +1,5 @@
 from ciphers.cipher import Cipher
-from constants import LETTER_TO_INDEX_MAP
+from constants import LETTER_TO_INDEX_MAP, INDEX_TO_LETTER_MAP
 
 
 class AtbashCipher(Cipher):
@@ -14,7 +14,7 @@ class AtbashCipher(Cipher):
         for char in self.original_text:
             if char in LETTER_TO_INDEX_MAP:
                 i = LETTER_TO_INDEX_MAP[char]
-                atbash_text.append(LETTER_TO_INDEX_MAP[25 - i])
+                atbash_text.append(INDEX_TO_LETTER_MAP[25 - i])
             else:
                 atbash_text.append(char)
         return "".join(atbash_text)
