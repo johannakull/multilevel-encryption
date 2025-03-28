@@ -13,7 +13,7 @@ class LetterNumberCipher(Cipher):
         encrypted_text = []
         for char in self.original_text:
             if char in LETTER_TO_INDEX_MAP:
-                new_char = LETTER_TO_INDEX_MAP[char]
+                new_char = LETTER_TO_INDEX_MAP[char] + 1
                 encrypted_text.append(f"{new_char} ")
             elif char == " ":
                 encrypted_text.append("0 ")
@@ -28,9 +28,9 @@ class LetterNumberCipher(Cipher):
                 decrypted_text.append(" ")
             else:
                 try:
-                    index = int(char)
+                    index = int(char) - 1
                 except ValueError:
                     decrypted_text.append(char)
                 else:
                     decrypted_text.append(INDEX_TO_LETTER_MAP[index])
-            return "".join(decrypted_text)
+        return "".join(decrypted_text)
