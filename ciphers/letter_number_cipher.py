@@ -10,27 +10,27 @@ class LetterNumberCipher(Cipher):
     name = "LetterNumber Cipher"
 
     def encrypt(self):
-        encrypted_text = ""
+        encrypted_text = []
         for char in self.original_text:
             if char in LETTER_TO_INDEX_MAP:
                 new_char = LETTER_TO_INDEX_MAP[char]
-                encrypted_text += f"{new_char} "
+                encrypted_text.append(f"{new_char} ")
             elif char == " ":
-                encrypted_text += "0 "
+                encrypted_text.append("0 ")
             else:
-                encrypted_text += f"{char} "
-        return encrypted_text
+                encrypted_text.append(f"{char} ")
+        return "".join(encrypted_text)
 
     def decrypt(self):  # doesn't work if there are numbers in original (unencrypted) text
-        decrypted_text = ""
+        decrypted_text = []
         for char in self.original_text.split(" "):
             if char == "0":
-                decrypted_text += " "
+                decrypted_text.append(" ")
             else:
                 try:
                     index = int(char)
                 except ValueError:
-                    decrypted_text += char
+                    decrypted_text.append(char)
                 else:
-                    decrypted_text += INDEX_TO_LETTER_MAP[index]
-            return decrypted_text
+                    decrypted_text.append(INDEX_TO_LETTER_MAP[index])
+            return "".join(decrypted_text)

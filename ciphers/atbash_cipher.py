@@ -10,14 +10,14 @@ class AtbashCipher(Cipher):
     name = "Atbash Cipher"
 
     def _generate_atbash_text(self) -> str:
-        atbash_text = ""
+        atbash_text = []
         for char in self.original_text:
             if char in LETTER_TO_INDEX_MAP:
                 i = LETTER_TO_INDEX_MAP[char]
-                atbash_text += LETTER_TO_INDEX_MAP[25 - i]
+                atbash_text.append(LETTER_TO_INDEX_MAP[25 - i])
             else:
-                atbash_text += char
-        return atbash_text
+                atbash_text.append(char)
+        return "".join(atbash_text)
 
     def encrypt(self) -> str:
         return self._generate_atbash_text()
